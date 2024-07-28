@@ -4,7 +4,7 @@ import clsx from "clsx";
 
 export const AccordianItem = (props) => {
     const { title, content, isOpen, setIsOpen } = props;
-    const titleStyle = clsx("flex justify-between items-center p-2", isOpen ? "bg-blue-300" : "bg-slate-200");
+    const titleStyle = clsx("flex justify-between items-center p-2 cursor-pointer", isOpen ? "bg-blue-300" : "bg-slate-200");
     return (
         <div className="w-full border border-gray-300" onClick={setIsOpen}>
             <div className={titleStyle}>

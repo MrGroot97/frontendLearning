@@ -12,10 +12,10 @@ export function curry(fns) {
 }
 
 //usage
-const sum = (a,b,c,d) => {
-    return a+b+c+d;
-};
+// const sum = (a,b,c,d) => {
+//     return a+b+c+d;
+// };
 
-const curryFunction = curry(sum);
-console.log(curryFunction(1)(2)(3)(4)(5)(6))
-console.log(curryFunction(1,2)(3,4))
+// const curryFunction = curry(sum);
+// console.log(curryFunction(1)(2)(3)(4)(5)(6))
+// console.log(curryFunction(1,2)(3,4))

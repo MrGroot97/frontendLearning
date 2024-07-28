@@ -13,7 +13,7 @@ export const Dropdown = ({
             [title]: e.target.value,
         });
     };
-    console.log({currencyParams});
+    // console.log({currencyParams});
 
     return <div className="grow-1 flex flex-col w-full">
         <label htmlFor={title} className="font-semibold block text-gray-700">

@@ -70,14 +70,14 @@ export function deepClone(obj) {
 
 //usage
 
-const test = {
-    a: 10,
-    b: {
-        c: [1, 2, 3],
-        d: function() {
-            console.log("d");
-        }
-    }
-}
+// const test = {
+//     a: 10,
+//     b: {
+//         c: [1, 2, 3],
+//         d: function() {
+//             console.log("d");
+//         }
+//     }
+// }
 
-console.log(deepClone(test));
+// console.log(deepClone(test));

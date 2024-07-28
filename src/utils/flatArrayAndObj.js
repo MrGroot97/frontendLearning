@@ -14,8 +14,8 @@ export function flatArray(arr) {
 }
 
 // usage
-const arr = [1, 2, [3, 4, [5, 6]]];
-console.log(flatArray(arr));
+// const arr = [1, 2, [3, 4, [5, 6]]];
+// console.log(flatArray(arr));
 
 export function flatObj(obj, prefix = "", delimiter = "_") {
     const flattened = {};
@@ -35,21 +35,21 @@ export function flatObj(obj, prefix = "", delimiter = "_") {
 }
 
 // usage
-const obj = {
-    first: "first",
-    name: {
-        firstname: "Shubham",
-        lastname: "Chauhan",
-        phone: {
-            mobile: "999999999",
-        },
-    },
-    address: {
-        city: "Moradabad",
-        locality: "Linepar",
-        pincode: 244001,
-        country: "India",
-    },
-};
+// const obj = {
+//     first: "first",
+//     name: {
+//         firstname: "Shubham",
+//         lastname: "Chauhan",
+//         phone: {
+//             mobile: "999999999",
+//         },
+//     },
+//     address: {
+//         city: "Moradabad",
+//         locality: "Linepar",
+//         pincode: 244001,
+//         country: "India",
+//     },
+// };
 
-console.log(flatObj(obj));
+// console.log(flatObj(obj));

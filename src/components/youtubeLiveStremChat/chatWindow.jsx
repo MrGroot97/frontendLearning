@@ -82,9 +82,6 @@ export const ChatWindow = () => {
         }
     };
 
-
-    console.log("chatIntervalRef ", chatIntervalRef.current);
-
     return (
         <div className="bg-gray-200 h-[500px] w-96 flex flex-col justify-between relative border border-slate-600">
             <div className="msgs flex flex-col-reverse overflow-y-scroll p-5 ">

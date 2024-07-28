@@ -10,14 +10,14 @@ export const pipe =
         }, value);
     };
 // usage
-const add = (a) => a + 1;
-const multiply = (a) => a * 2;
-const divide = (a) => a / 2;
-const subtract = (a) => a - 1;
-const addThenMultiply = pipe(add, multiply);
-const divideThenSubtract = pipe(divide, subtract);
-console.log(addThenMultiply(5)); // 12
-console.log(divideThenSubtract(5)); // 1
+// const add = (a) => a + 1;
+// const multiply = (a) => a * 2;
+// const divide = (a) => a / 2;
+// const subtract = (a) => a - 1;
+// const addThenMultiply = pipe(add, multiply);
+// const divideThenSubtract = pipe(divide, subtract);
+// console.log(addThenMultiply(5)); // 12
+// console.log(divideThenSubtract(5)); // 1
 
 
 export const compose =
@@ -28,10 +28,10 @@ export const compose =
         }, value);
     };
 // usage
-const addThenMultiply1 = compose(multiply, add);
-const divideThenSubtract1 = compose(subtract, divide);
-console.log(addThenMultiply1(5)); // 12
-console.log(divideThenSubtract1(5)); // 1
+// const addThenMultiply1 = compose(multiply, add);
+// const divideThenSubtract1 = compose(subtract, divide);
+// console.log(addThenMultiply1(5)); // 12
+// console.log(divideThenSubtract1(5)); // 1
 
 
 /**

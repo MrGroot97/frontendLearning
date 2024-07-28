@@ -76,8 +76,6 @@ export const ListCard = () => {
         });
     }
 
-    console.log(mapList);
-
     return <div className="p-5 flex justify-center gap-5">
         <Listcard mapList={mapList.get(1)} listKey={1} handleOnChange={handleOnChange} />
         <div className="flex flex-col items-center justify-center gap-5">

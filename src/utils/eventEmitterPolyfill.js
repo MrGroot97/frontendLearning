@@ -42,17 +42,17 @@ export class Emitter {
 }
 
 // usage
-let channel = ""
-const emitter = new Emitter();
-console.log({channel});
-const subscription = emitter.subscribe('modify',(link)=>{
-  channel = link;
-  console.log({"modified channel": channel});
-})
-emitter.emit('modify', 'https://www.google.com');
-console.log({channel});
+// let channel = ""
+// const emitter = new Emitter();
+// console.log({channel});
+// const subscription = emitter.subscribe('modify',(link)=>{
+//   channel = link;
+//   console.log({"modified channel": channel});
+// })
+// emitter.emit('modify', 'https://www.google.com');
+// console.log({channel});
 
-subscription.release();
+// subscription.release();
 
-emitter.emit('modify', 'https://www.facebook.com');
-console.log({channel});
+// emitter.emit('modify', 'https://www.facebook.com');
+// console.log({channel});

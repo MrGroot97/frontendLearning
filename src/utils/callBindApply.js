@@ -23,7 +23,7 @@ function myCall(context = {}, ...args) {
 }
 
 Function.prototype.myCall = myCall;
-purchaseCar.myCall(car, 20000, "New York");
+// purchaseCar.myCall(car, 20000, "New York");
 
 function myApply(context = {}, args) {
     if (typeof this !== "function") {
@@ -39,13 +39,13 @@ function myApply(context = {}, args) {
 }
 
 Function.prototype.myApply = myApply;
-purchaseCar.myApply(car, [20000, "New York"]);
+// purchaseCar.myApply(car, [20000, "New York"]);
 
 //bind method just returns a new function with the context bound to the object passed as an argument
 
 const newPurchaseCar = purchaseCar.bind(car); // returns a new function
 
-console.log(newPurchaseCar(20000, "New York"));
+// console.log(newPurchaseCar(20000, "New York"));
 
 function myBind(context, ...args) {
     if (typeof this !== "function") {
@@ -73,6 +73,14 @@ function myBind(context, ...args) {
 Function.prototype.myBind = myBind;
 
 const newPurchaseCar2 = purchaseCar.myBind(car);
-console.log(newPurchaseCar2(20000, "New York"));
+// console.log(newPurchaseCar2(20000, "New York"));
 
-
+let cap = {
+    name: "Steve",
+    sayHi: () => {
+        console.log("Hi from ", this.name);
+    },
+};
+// cap.sayHi();
+// let sayHiAdd = cap.sayHi;
+// sayHiAdd();

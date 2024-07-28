@@ -20,7 +20,7 @@ export const CurrencyConverter = () => {
             const data = await response.json();
             setCurrencyList(Object.keys(data));
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
     };
 
@@ -42,7 +42,7 @@ export const CurrencyConverter = () => {
             const data = await response.json();
             setConvertedAmount(data.rates[currencyParams.To]);
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
     }
 

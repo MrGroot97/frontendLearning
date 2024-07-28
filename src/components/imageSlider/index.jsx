@@ -1,16 +1,17 @@
-const images = [
-  "https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg",
-  "https://piktochart.com/wp-content/uploads/2023/04/large-29.jpg",
-  "https://i.pinimg.com/originals/2b/66/01/2b66016d5a1e2d230ecce59f8e673382.png",
-  "https://i.pinimg.com/736x/5f/09/47/5f0947219a7f446e804e7e0055089fad.jpg",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoKMpEfmuwzKmwyl4reX0NW7-Ixgn1DCz6IvxSYpq_CQ&s",
-];
 import clsx from "clsx";
+import slide1 from "../../assets/pexels_slide1.jpg";
+import slide2 from "../../assets/pexels_slide2.jpg";
+import slide3 from "../../assets/pexels_slide3.jpg";
+import slide4 from "../../assets/pexels_slide4.jpg";
+import slide5 from "../../assets/pexels_slide5.jpg";
+import slide6 from "../../assets/pexels_slide6.jpg";
 import { useEffect, useState, useRef } from "react";
 import { FaAngleLeft } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa";
 import { FaPlayCircle } from "react-icons/fa";
 import { FaPauseCircle } from "react-icons/fa";
+
+const images = [slide1, slide2, slide3, slide4, slide5, slide6];
 
 export const ImageSlider = () => {
   const [index, setIndex] = useState(0);
@@ -54,21 +55,21 @@ export const ImageSlider = () => {
   }, [index]);
 
   return (
-    <div>
+    <div className="max-h-[calc(100vh-100px)]">
       <h1 className="text-3xl text-center mt-10">Image Slider</h1>
-      <div className="w-full mx-auto mt-10 flex justify-center items-center">
+      <div className="w-full mx-auto mt-5 flex justify-center items-center">
         <div
           className="text-3xl cursor-pointer hover:duration-300 hover:scale-125"
           onClick={nextImage}
         >
           <FaAngleLeft />
         </div>
-        <div className="w-[400px] h-[250px] overflow-hidden">
+        <div className="w-auto h-[550px] overflow-hidden">
           <img
             src={images[index]}
             alt="image"
             className={clsx(
-              "w-full object-cover",
+              "object-cover w-full h-full transition-transform duration-500 ease-in-out transform", 
               animate && "animate-slide-in"
             )}
           />

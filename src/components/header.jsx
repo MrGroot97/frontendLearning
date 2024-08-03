@@ -15,17 +15,16 @@ const dropdownItems = [
 const header = () => {
 
     return (
-        <div className="sticky top-0 flex z-10 justify-between items-center bg-[#242424] text-white">
-            <a href="/">
+        <div className="sticky top-0 flex z-10 justify-between items-center bg-black text-white">
+            <Link to="/" className="text-white">
                 <img src={reactLogo} className="logo react" alt="React logo" />
-            </a>
+            </Link>
             <div>
                 <nav className="flex justify-between items-center p-4 gap-5">
                     <Dropdown
                         label="Select component"
                         items={[...dropdownItems]}
                     />
-                    <Link to="/about" className="text-white">About</Link>
                     <Link to="/contact" className="text-white">Contact</Link>
                 </nav>
             </div>

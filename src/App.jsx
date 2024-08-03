@@ -7,6 +7,8 @@ import { ConfluenceTreeStructure } from "./components/confluenceTreeStructure";
 import { Pagination } from "./components/pagination";
 import { StickyNote } from "./components/stickyNotes";
 import LLDInterviewQuestions  from "./lldInterviewQuestions";
+import Home from "./components/home";
+import ContactMe from "./components/contantPage";
 
 function App() {
     return (
@@ -16,18 +18,13 @@ function App() {
                 <Routes>
                     <Route
                         path="/"
-                        element={
-                            <div className="mx-10">
-                                Abhi to party shuru hui hai
-                            </div>
-                        }
+                        element={<Home/>}
                     />
                     <Route
                         path="/lld-interview-questions"
                         element={<LLDInterviewQuestions />}
                     />
-                    <Route path="/about" element={<div>About</div>} />
-                    <Route path="/contact" element={<div>Contact</div>} />
+                    <Route path="/contact" element={<ContactMe />} />
                     <Route
                         path="/infinite-scroll"
                         element={<InfiniteScroll />}

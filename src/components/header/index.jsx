@@ -1,6 +1,7 @@
 import reactLogo from "../../assets/react.svg";
 import Dropdown from "./dropdown";
 import { Link } from "react-router-dom";
+import AppThemeIcon from "./theme";
 
 const dropdownItems = [
     { label: "Select Catalog", href: "/" },
@@ -27,6 +28,7 @@ const Header = () => {
                         items={[...dropdownItems]}
                     />
                     <Link to="/contact" className="text-white">Contact</Link>
+                    <AppThemeIcon />
                 </nav>
             </div>
         </header>

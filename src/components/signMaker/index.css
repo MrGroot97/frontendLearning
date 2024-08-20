@@ -1,11 +1,32 @@
-.sign-container {
-    width: 100%;
-    background-color: var(--background-color);
-    min-height: calc(100vh - 297px - 96px);
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fafafa;
-    overflow: hidden;
+input, select {
+    padding-left: 0.5rem;
+    border-radius: 0.25rem;
+}
+
+input[type="color"] {
+    -webkit-appearance: none; /* Remove default styling */
+    appearance: none;
+    border: 2px solid white; /* White border */
+    border-radius: 50%; /* Fully rounded corners for circle */
+    width: 50px; /* Width of the color picker */
+    height: 50px; /* Height of the color picker */
+    padding: 0; /* Remove default padding */
+    background-color: transparent; /* Transparent background to see the border */
+    cursor: pointer; /* Pointer cursor on hover */
+    outline: none; /* Remove default outline */
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border-radius: 50%; /* Rounded corners for WebKit browsers */
+    border: none; /* Remove default border */
+}
+
+input[type="color"]::-moz-color-swatch {
+    border-radius: 50%; /* Rounded corners for Mozilla browsers */
+    border: none; 
+}
+
+input[type="color"]::-ms-color-swatch {
+    border-radius: 50%; /* Rounded corners for Internet Explorer */
+    border: none;
 }

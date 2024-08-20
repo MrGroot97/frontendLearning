@@ -1,7 +1,7 @@
 import Typed from "typed.js";
 import { useEffect, useRef } from "react";
-import { MdOutlineMail } from "react-icons/md";
-import { MdOutlineLocationOn } from "react-icons/md";
+import { MdOutlineMail, MdOutlineLocationOn } from "react-icons/md";
+import ContactForm from "./form";
 import "./index.css";
 
 const ContactMe = () => {
@@ -72,54 +72,7 @@ const ContactMe = () => {
                         </a>
                     </div>
                     <div className="form w-80 h-auto bg-slate-200 p-5 shadow-lg rounded-lg">
-                        <h4 className="text-[12px] pb-2">
-                            Please fill this in decent manner 🙂.
-                        </h4>
-                        <hr className="bg-slate-800 h-0.5"></hr>
-                        <form
-                            action="https://formspree.io/f/xjvjzqzq"
-                            method="POST"
-                            className="flex flex-col mt-1"
-                        >
-                            <div className="flex flex-col mt-2">
-                                <label htmlFor="name">Name</label>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    id="name"
-                                    placeholder="Enter your name"
-                                    className="rounded-sm pl-1"
-                                    required
-                                />
-                            </div>
-                            <div className="flex flex-col mt-2">
-                                <label htmlFor="email">Email</label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    id="email"
-                                    placeholder="Enter your email"
-                                    className="rounded-sm pl-1"
-                                    required
-                                />
-                            </div>
-                            <div className="flex flex-col mt-2">
-                                <label htmlFor="message">Message</label>
-                                <textarea
-                                    name="message"
-                                    id="message"
-                                    placeholder="Enter your message"
-                                    className="rounded-sm pl-1"
-                                    required
-                                ></textarea>
-                            </div>
-                            <button
-                                type="submit"
-                                className="bg-gray-100 text-black rounded-md px-5 max-w-[100px] self-center text-center py-1 mt-2 cursor-pointer shadow-lg hover:scale-105 hover:transition hover:duration-300 hover:ease-in-out"
-                            >
-                                Submit
-                            </button>
-                        </form>
+                        <ContactForm />
                     </div>
                 </div>
             </div>

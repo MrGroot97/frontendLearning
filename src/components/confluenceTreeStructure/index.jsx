@@ -1,7 +1,7 @@
 import { Sidebar } from './sidebar';
 
 export const ConfluenceTreeStructure = () => {
-    return <div className='bg-white h-screen'>
+    return <div className='bg-white justify-start w-full'>
         <Sidebar />
     </div>;
 };

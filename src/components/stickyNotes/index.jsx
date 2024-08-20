@@ -143,7 +143,7 @@ export const StickyNote = () => {
     }
 
     return (
-        <div className="relative flex flex-col">
+        <div className="relative flex flex-col w-full min-h-[100dvh] bg-white text-slate-800">
             <div className="inline-flex items-center justify-center max-w-[300px] overflow-hidden rounded-lg mx-auto p-1">
                 <input
                     type="text"

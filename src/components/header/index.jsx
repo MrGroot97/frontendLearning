@@ -1,9 +1,10 @@
-import reactLogo from "../assets/react.svg";
+import reactLogo from "../../assets/react.svg";
 import Dropdown from "./dropdown";
 import { Link } from "react-router-dom";
 
 const dropdownItems = [
-    { label: "Home", href: "/" },
+    { label: "Select Catalog", href: "/" },
+    { label: "Sign Maker", href: "/sign-maker" },
     { label: "LLD interview questions", href: "/lld-interview-questions" },
     { label: "Infinite Scroll", href: "/infinite-scroll" },
     { label: "Image Slider", href: "/image-slider" },
@@ -12,10 +13,10 @@ const dropdownItems = [
     { label: "Sticky Notes", href: "/sticky-notes" },
 ];
 
-const header = () => {
+const Header = () => {
 
     return (
-        <div className="sticky top-0 flex z-10 justify-between items-center bg-black text-white">
+        <header className="fixed w-full top-0 flex z-30 justify-between items-center bg-black text-white">
             <Link to="/" className="text-white">
                 <img src={reactLogo} className="logo react" alt="React logo" />
             </Link>
@@ -28,8 +29,8 @@ const header = () => {
                     <Link to="/contact" className="text-white">Contact</Link>
                 </nav>
             </div>
-        </div>
+        </header>
     );
 };
 
-export default header;
+export default Header;

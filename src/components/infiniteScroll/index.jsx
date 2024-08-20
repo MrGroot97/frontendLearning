@@ -31,7 +31,7 @@ export const InfiniteScroll = () => {
   
 
   return (
-    <div className="flex flex-wrap gap-x-2 gap-y-5 justify-center">
+    <div className="flex flex-wrap gap-x-2 gap-y-5 justify-center pt-[10px]">
         {data.map((item, index) => (
           <div key={index} className="flex flex-col w-fit rounded-lg justify-center border border-solid border-slate-300">
             <img src={item.url} alt={item.title} className="w-64 h-64 rounded-lg m-2" />

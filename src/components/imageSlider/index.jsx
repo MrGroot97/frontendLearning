@@ -6,10 +6,7 @@ import slide4 from "../../assets/pexels_slide4.jpg";
 import slide5 from "../../assets/pexels_slide5.jpg";
 import slide6 from "../../assets/pexels_slide6.jpg";
 import { useEffect, useState, useRef } from "react";
-import { FaAngleLeft } from "react-icons/fa";
-import { FaAngleRight } from "react-icons/fa";
-import { FaPlayCircle } from "react-icons/fa";
-import { FaPauseCircle } from "react-icons/fa";
+import { FaAngleLeft, FaAngleRight, FaPlayCircle, FaPauseCircle } from "react-icons/fa";
 
 const images = [slide1, slide2, slide3, slide4, slide5, slide6];
 
@@ -55,7 +52,7 @@ export const ImageSlider = () => {
   }, [index]);
 
   return (
-    <div className="max-h-[calc(100vh-100px)]">
+    <div>
       <h1 className="text-3xl text-center mt-10">Image Slider</h1>
       <div className="w-full mx-auto mt-5 flex justify-center items-center">
         <div

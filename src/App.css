@@ -1,31 +1,43 @@
 @view-transition {
-  navigation: auto;
+    navigation: auto;
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+    filter: drop-shadow(0 0 2em #646cffaa);
 }
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+    filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+main, .parent-container {
+    width: 100%;
+    background-color: var(--background-color);
+    min-height: calc(100vh - 297px - 96px);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fafafa;
+    overflow: hidden;
 }
 
 @keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  a .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+    a .logo {
+        animation: logo-spin infinite 20s linear;
+    }
 }

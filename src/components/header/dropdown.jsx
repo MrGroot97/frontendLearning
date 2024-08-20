@@ -1,30 +1,40 @@
-import { BsChevronDown, BsChevronUp } from "react-icons/bs";
-import { useEffect, useState } from "react";
+import { BsChevronDown, } from "react-icons/bs";
+import { useEffect, useState, useRef } from "react";
 import clsx from "clsx";
 import CustomLink from "../customLink";
+import { useLocation } from "react-router-dom";
 
-const Dropdown = ({ items, onSelect = ()=>void 0 }) => {
+const Dropdown = ({ items = [], onSelect = () => void 0 }) => {
     const [showList, setShowList] = useState(false);
     const [selectedItem, setSelectedItem] = useState(null);
+    let location = useLocation();
+    const menuRef = useRef();
+
+    useEffect(() => {
+        setSelectedItem(items.find((item) => item.href === location.pathname));
+        console.log(location.pathname);
+        document.title = location.pathname !== '/' ? `Engineer Babu - ${location.pathname.replace("/","")}` : 'Engineer Babu';
+    }, [location]);
 
     const handleDropdown = () => {
-        setShowList(!showList);
+        setShowList(prev => !prev);
     };
 
     const handleClickOutside = (e) => {
-        if (e.target.id !== "menu-button") {
+        // Check if the click was outside the menu
+        if (menuRef.current && !menuRef.current.contains(e.target)) {
             setShowList(false);
         }
     };
 
-    const onItemSelect= (e, item) => {
+    const onItemSelect = (e, item) => {
         setSelectedItem(item);
         setShowList(false);
         onSelect();
-    }
+    };
 
     useEffect(() => {
-        if(items.length) setSelectedItem(items[0]);
+        if (items.length) setSelectedItem(items[0]);
         document.addEventListener("click", handleClickOutside);
         return () => {
             document.removeEventListener("click", handleClickOutside);
@@ -37,22 +47,20 @@ const Dropdown = ({ items, onSelect = ()=>void 0 }) => {
             hidden: !showList,
         }
     );
-
-    console.log("selectedItem", showList, selectedItem);
-    if (!selectedItem) return null;
     return (
         <div className="relative inline-block text-left">
             <div>
                 <button
                     type="button"
-                    className="inline-flex w-full justify-center items-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                    className="inline-flex w-full border-none justify-center items-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold text-slate-100 shadow-sm ring-1 ring-inset ring-black hover:bg-slate-800"
                     id="menu-button"
                     aria-expanded="true"
                     aria-haspopup="true"
                     onClick={handleDropdown}
+                    ref={menuRef}
                 >
-                    {selectedItem.label}
-                    {showList ? <BsChevronUp /> :<BsChevronDown />}
+                    {selectedItem?.label || items[0].label}
+                    <BsChevronDown  className={`${showList ? 'transition-all duration-300 rotate-180': 'duration-300'}`}/>
                 </button>
                 <div
                     className={menuItemsContainerClasses}

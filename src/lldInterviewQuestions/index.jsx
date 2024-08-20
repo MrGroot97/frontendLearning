@@ -13,7 +13,7 @@ import { AltassianChart } from "../components/atlassianChart";
 
 const LLDInterviewQuestions = () => {
     return (
-        <div className="mx-10">
+        <div className="mx-10 pt-[10px]">
             <ComponentHoc title="Uber Box Selector">
                 <UberBoxSelector />
             </ComponentHoc>

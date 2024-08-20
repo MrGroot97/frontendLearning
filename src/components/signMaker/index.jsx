@@ -64,12 +64,18 @@ const SignMaker = () => {
         }
     };
 
-    const draw = (e) => {
-        if (!isDrawingRef.current) return;
-        // Get mouse position relative to the canvas
+    const getMouseOrTouchPosition = (e) => {
         const rect = sketch.current.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
+        return { x, y };
+    };
+
+
+    const draw = (e) => {
+        if (!isDrawingRef.current) return;
+        // Get mouse position relative to the canvas
+        const { x, y } = getMouseOrTouchPosition(e);
         const ctx = sketch.current.getContext("2d");
 
         ctx.strokeStyle = penColorRef.current;
@@ -81,7 +87,7 @@ const SignMaker = () => {
         ctx.moveTo(x, y);
     };
 
-    const startDrwaing = (e) => {
+    const startDrawing = (e) => {
         saveHistory();
         isDrawingRef.current = true;
         draw(e);
@@ -101,19 +107,35 @@ const SignMaker = () => {
 
     useEffect(() => {
         setCanvasSize();
+        const canvas = sketch.current;
 
-        sketch.current.addEventListener("mousedown", startDrwaing);
-        sketch.current.addEventListener("mousemove", draw);
-        sketch.current.addEventListener("mouseup", stopDrawing);
-        sketch.current.addEventListener("mouseleave", stopDrawing);
+        const handleMouseDown = (e) => startDrawing(e);
+        const handleMouseMove = (e) => draw(e);
+        const handleMouseUp = (e) => stopDrawing(e);
+        const handleMouseLeave = (e) => stopDrawing(e);
+
+        const handleTouchStart = (e) => startDrawing(e.touches[0]);
+        const handleTouchMove = (e) => draw(e.touches[0]);
+        const handleTouchEnd = (e) => stopDrawing(e);
+
+        canvas.addEventListener("mousedown", handleMouseDown);
+        canvas.addEventListener("mousemove", handleMouseMove);
+        canvas.addEventListener("mouseup", handleMouseUp);
+        canvas.addEventListener("mouseleave", handleMouseLeave);
+        canvas.addEventListener("touchstart", handleTouchStart, { passive: false });
+        canvas.addEventListener("touchmove", handleTouchMove, { passive: false });
+        canvas.addEventListener("touchend", handleTouchEnd, { passive: false });
         // Handle window resize to adjust canvas size
         window.addEventListener('resize', setCanvasSize);
 
         return () => {
-            sketch.current.removeEventListener('mousedown', startDrwaing);
-            sketch.current.removeEventListener('mouseup', draw);
-            sketch.current.removeEventListener('mousemove', stopDrawing);
-            sketch.current.addEventListener("mouseleave", stopDrawing);
+            canvas.removeEventListener("mousedown", handleMouseDown);
+            canvas.removeEventListener("mousemove", handleMouseMove);
+            canvas.removeEventListener("mouseup", handleMouseUp);
+            canvas.removeEventListener("mouseleave", handleMouseLeave);
+            canvas.removeEventListener("touchstart", handleTouchStart);
+            canvas.removeEventListener("touchmove", handleTouchMove);
+            canvas.removeEventListener("touchend", handleTouchEnd);
             window.removeEventListener("resize", setCanvasSize)
         };
     }, []);

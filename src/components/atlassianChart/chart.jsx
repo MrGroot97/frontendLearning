@@ -19,7 +19,7 @@ export const Chart = ({ data }) => {
             <div className=" absolute top-1/2 left-[-15px] translate-y-1/2 translate-x-[-50%] rotate-[-90deg]">
                 Number of tickets
             </div>
-            <div className="h-full border-b-2 border-l-2 border-solid border-black flex items-end gap-5">
+            <div className="h-full border-b-2 border-l-2 border-solid border-black flex items-end gap-5 overflow-x-auto lg:overflow-x-hidden">
                 {transformedData.map((dep) => (
                     <div
                         key={dep.id}

@@ -15,9 +15,9 @@ export const InputComponent = () =>{
     }
 
     return (
-        <div className='flex w-[400px]'>
+        <div className='flex flex-col items-center justify-center w-[300px] md:w-[350px] lg:w-[450px] md:flex-row'>
             <ForwardRefInput ref={inputRef}/>
-            <button className="bg-blue-300 rounded-lg px-3 ml-5" onClick={handleClick}>Focus input</button>
+            <button className="bg-blue-300 rounded-lg px-3 my-2 md:ml-5 md:my-0" onClick={handleClick}>Focus input</button>
         </div>
     )
 }

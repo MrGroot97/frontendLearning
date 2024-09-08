@@ -143,6 +143,7 @@ const SignMaker = () => {
     return (
         <div className="w-[inherit] text-center">
             <h3>Save your signature here. Use it any where you want.</h3>
+            <h5 className="text-sm text-left pl-1">*Best viewed on desktop</h5>
             <div className="flex gap-[10px] mt-2 items-center justify-center">
                 <label htmlFor="name">Choose pen color</label>
                 <input

@@ -179,7 +179,7 @@
     }
     .skills {
         position: relative;
-        top: -60px;
+        top: -30px;
         display: flex;
         flex-direction: column;
         overflow-x: auto;

@@ -1,9 +1,8 @@
 export const VideoStream = () => {
     return (
-        <div>
+        <div className="w-full">
             <iframe
-                width="560"
-                height="315"
+                className="w-full h-full md:w-[560px] md:h-[315px]"
                 src="https://www.youtube.com/embed/5xf4_Kx7azg?si=Ba5v66TFQIUPUa1z"
                 title="YouTube video player"
                 frameBorder="0"

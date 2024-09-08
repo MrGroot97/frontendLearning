@@ -9,7 +9,7 @@ const dropdownItems = [
     { label: "LLD interview questions", href: "/lld-interview-questions" },
     { label: "Infinite Scroll", href: "/infinite-scroll" },
     { label: "Image Slider", href: "/image-slider" },
-    { label: "Confluence File system", href: "/confluence-tree-structure" },
+    { label: "File system", href: "/confluence-tree-structure" },
     { label: "Pagination", href: "/pagination" },
     { label: "Sticky Notes", href: "/sticky-notes" },
 ];

@@ -1,4 +1,4 @@
-const LINK = 'https://youtube.com/devtoolstech/videos';
+const LINK = 'https://www.google.com';
 
 const IOS_ARTICLES = {
   id: 6,
@@ -87,8 +87,8 @@ const DATA = [
   },
   {
     id: 201,
-    label: 'Devtools Tech',
-    link: LINK,
+    label: 'Youtube',
+    link: 'https://www.youtube.com',
   },
 ];
 

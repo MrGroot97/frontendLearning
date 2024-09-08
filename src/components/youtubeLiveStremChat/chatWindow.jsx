@@ -83,7 +83,7 @@ export const ChatWindow = () => {
     };
 
     return (
-        <div className="bg-gray-200 h-[500px] w-96 flex flex-col justify-between relative border border-slate-600">
+        <div className="bg-gray-200 h-[300px] md:h-[500px] w-fit m-auto md:w-96 flex flex-col justify-between relative border border-slate-600">
             <div className="msgs flex flex-col-reverse overflow-y-scroll p-5 ">
                 {messages.map((data, idx) => (
                     <ChatMessage key={idx} {...data} />

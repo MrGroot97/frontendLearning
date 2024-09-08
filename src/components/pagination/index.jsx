@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ProductCard } from "./productCard";
 import clsx from "clsx";
 
-const LIMIT = 10;
+const LIMIT = 30;
 
 export const Pagination = () => {
     const [currentPage, setCurrentPage] = useState(0);
@@ -22,12 +22,13 @@ export const Pagination = () => {
     useEffect(() => {
         fetchProducts(currentPage);
     }, [currentPage]);
+
     return (
-        <div className="grid grid-cols-4 gap-5 bg-white text-black p-5">
+        <div className="flex flex-col gap-2 bg-white text-black p-5 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {products.map((product) => (
                 <ProductCard key={product.id} product={product} />
             ))}
-            <div className="col-span-4 flex justify-center items-center gap-1">
+            <div className="flex justify-center items-center gap-1">
                 <span
                     onClick={() => setCurrentPage((prev) => prev - 1)}
                     className={

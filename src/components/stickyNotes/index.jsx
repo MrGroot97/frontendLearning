@@ -136,14 +136,20 @@ export const StickyNote = () => {
         const handleMouseUp = () => {
             document.removeEventListener("mousemove", handleMouseMove);
             document.removeEventListener("mouseup", handleMouseUp);
+            document.removeEventListener("touchmove", handleTouchMove);
+            document.removeEventListener("touchend", handleTouchEnd);
         }
 
         document.addEventListener("mousemove", handleMouseMove);
         document.addEventListener("mouseup", handleMouseUp);
+        document.addEventListener("touchmove", handleTouchMove);
+        document.addEventListener("touchend", handleTouchEnd);
+
     }
 
     return (
         <div className="relative flex flex-col w-full min-h-[100dvh] bg-white text-slate-800">
+            <h5 className="text-sm text-left p-2 text-black">*Best viewed on desktop</h5>
             <div className="inline-flex items-center justify-center max-w-[300px] overflow-hidden rounded-lg mx-auto p-1">
                 <input
                     type="text"

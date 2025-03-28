@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+ 
 import clsx from "clsx";
 import { useEffect, useState, useRef } from "react";
 import { SuggestionList } from "./suggestionList";

@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+ 
 export const ProductCard = (props) => {
     const { product } = props;
     const { title, description, price, discountPercentage, thumbnail } =

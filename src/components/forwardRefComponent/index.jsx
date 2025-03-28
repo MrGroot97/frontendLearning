@@ -1,23 +1,35 @@
-import { useRef, forwardRef } from 'react';
+import { useRef, forwardRef } from "react";
 
 // eslint-disable-next-line react/display-name
 const ForwardRefInput = forwardRef((props, ref) => {
-    return (
-        <input type="text" ref={ref} className='bg-slate-300 rounded-md pl-2' placeholder='input here'/>
-    )
-})
+  return (
+    <div className="relative flex-1 max-w-sm">
+      <input
+        type="text"
+        ref={ref}
+        className="w-full h-10 bg-white dark:bg-gray-700 text-gray-800 dark:text-white border-2 border-gray-400 dark:border-gray-500 rounded-md px-4 py-2 shadow-md transition-all duration-200 focus:outline-none focus:border-blue-500 dark:focus:border-blue-400"
+        placeholder="Type something here..."
+      />
+    </div>
+  );
+});
 
-export const InputComponent = () =>{
-    const inputRef = useRef(null);
+export const InputComponent = () => {
+  const inputRef = useRef(null);
 
-    const handleClick = () => {
-        inputRef.current.focus();
-    }
+  const handleClick = () => {
+    inputRef.current.focus();
+  };
 
-    return (
-        <div className='flex flex-col items-center justify-center w-[300px] md:w-[350px] lg:w-[450px] md:flex-row'>
-            <ForwardRefInput ref={inputRef}/>
-            <button className="bg-blue-300 rounded-lg px-3 my-2 md:ml-5 md:my-0" onClick={handleClick}>Focus input</button>
-        </div>
-    )
-}
+  return (
+    <div className="forwardRefComponent flex flex-col md:flex-row items-center justify-center w-full gap-4 py-6">
+      <ForwardRefInput ref={inputRef} />
+      <button
+        className="bg-blue-500 hover:bg-blue-600 text-white dark:bg-blue-600 dark:hover:bg-blue-700 rounded-lg px-6 py-3 shadow-md"
+        onClick={handleClick}
+      >
+        Focus input
+      </button>
+    </div>
+  );
+};

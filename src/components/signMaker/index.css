@@ -1,32 +1,94 @@
-input, select {
-    padding-left: 0.5rem;
-    border-radius: 0.25rem;
+.sketch-container {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  margin: 10px auto;
+}
+
+/* Enhanced styling for the sign canvas */
+#sketch {
+  border: 2px solid var(--border-color) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05) !important;
+  background-color: white !important;
+}
+
+/* Specific styling for light mode */
+:root #sketch {
+  border-color: #c5d0e6 !important;
+}
+
+/* Specific styling for dark mode */
+.dark #sketch {
+  border-color: #4a5568 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+}
+
+input,
+select {
+  padding-left: 0.5rem;
+  border-radius: 0.25rem;
 }
 
 input[type="color"] {
-    -webkit-appearance: none; /* Remove default styling */
-    appearance: none;
-    border: 2px solid white; /* White border */
-    border-radius: 50%; /* Fully rounded corners for circle */
-    width: 50px; /* Width of the color picker */
-    height: 50px; /* Height of the color picker */
-    padding: 0; /* Remove default padding */
-    background-color: transparent; /* Transparent background to see the border */
-    cursor: pointer; /* Pointer cursor on hover */
-    outline: none; /* Remove default outline */
+  -webkit-appearance: none; /* Remove default styling */
+  appearance: none;
+  border: 2px solid white; /* White border */
+  border-radius: 50%; /* Fully rounded corners for circle */
+  width: 50px; /* Width of the color picker */
+  height: 50px; /* Height of the color picker */
+  padding: 0; /* Remove default padding */
+  background-color: transparent; /* Transparent background to see the border */
+  cursor: pointer; /* Pointer cursor on hover */
+  outline: none; /* Remove default outline */
 }
 
 input[type="color"]::-webkit-color-swatch {
-    border-radius: 50%; /* Rounded corners for WebKit browsers */
-    border: none; /* Remove default border */
+  border-radius: 50%; /* Rounded corners for WebKit browsers */
+  border: none; /* Remove default border */
 }
 
 input[type="color"]::-moz-color-swatch {
-    border-radius: 50%; /* Rounded corners for Mozilla browsers */
-    border: none; 
+  border-radius: 50%; /* Rounded corners for Mozilla browsers */
+  border: none;
 }
 
 input[type="color"]::-ms-color-swatch {
-    border-radius: 50%; /* Rounded corners for Internet Explorer */
-    border: none;
+  border-radius: 50%; /* Rounded corners for Internet Explorer */
+  border: none;
+}
+
+/* Button styling that matches ForwardRefComponent */
+.actions button,
+.sketch-container button {
+  background-color: #3b82f6; /* bg-blue-500 in light mode */
+  color: white;
+  border: none;
+  transition: all 0.2s ease;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.actions button:hover,
+.sketch-container button:hover {
+  background-color: #2563eb; /* bg-blue-600 in light mode */
+  transform: translateY(-1px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.dark .actions button,
+.dark .sketch-container button {
+  background-color: #2563eb; /* dark:bg-blue-600 in dark mode */
+}
+
+.dark .actions button:hover,
+.dark .sketch-container button:hover {
+  background-color: #1d4ed8; /* dark:bg-blue-700 in dark mode */
+}
+
+.actions button:focus,
+.sketch-container button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); /* blue-500 with opacity */
 }

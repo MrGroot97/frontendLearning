@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+ 
 export const ChatMessage = ({ name, profile_url, msg }) => {
     return (
         <div className="flex gap-2">

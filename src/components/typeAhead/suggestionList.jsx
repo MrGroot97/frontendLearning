@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+ 
 import clsx from "clsx";
 
 export const SuggestionList = (props) => {

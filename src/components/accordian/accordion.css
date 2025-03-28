@@ -1,0 +1,87 @@
+/* Accordion styling with theme support */
+
+.accordion-container {
+  background-color: var(--card-bg);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px var(--shadow-color);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.dark .accordion-container {
+  background-color: var(--secondary-bg);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.accordion-item {
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+.accordion-header {
+  background-color: var(--secondary-bg);
+  color: var(--primary-text);
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  text-align: left;
+  appearance: none;
+}
+
+.accordion-header:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: -2px;
+}
+
+.accordion-header:hover {
+  background-color: rgba(var(--accent-color-rgb), 0.1);
+}
+
+.dark .accordion-header:hover {
+  background-color: rgba(var(--accent-color-rgb), 0.15);
+}
+
+.accordion-active {
+  background-color: rgba(var(--accent-color-rgb), 0.2);
+  border-bottom-color: var(--border-color);
+}
+
+.dark .accordion-active {
+  background-color: rgba(var(--accent-color-rgb), 0.25);
+}
+
+.accordion-icon {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  color: var(--accent-color);
+  line-height: 0;
+}
+
+.dark .accordion-icon {
+  background-color: rgba(var(--accent-color-rgb), 0.2);
+}
+
+.accordion-icon:hover {
+  background-color: rgba(var(--accent-color-rgb), 0.2);
+}
+
+.dark .accordion-icon:hover {
+  background-color: rgba(var(--accent-color-rgb), 0.3);
+}
+
+.accordion-content {
+  background-color: var(--card-bg);
+  color: var(--secondary-text);
+  transition: all 0.3s ease;
+}
+
+.dark .accordion-content {
+  background-color: var(--secondary-bg);
+}

@@ -12,6 +12,7 @@ const dropdownItems = [
   { label: "File system", href: "/confluence-tree-structure" },
   { label: "Pagination", href: "/pagination" },
   { label: "Sticky Notes", href: "/sticky-notes" },
+  { label: "Utility Docs", href: "/utilities" },
 ];
 
 const Header = () => {
@@ -31,6 +32,9 @@ const Header = () => {
       <div>
         <nav className="flex justify-between items-center p-4 gap-5">
           <Dropdown label="Select component" items={[...dropdownItems]} />
+          <Link to="/utilities" className="hover:opacity-80 transition-colors">
+            Utilities
+          </Link>
           <Link to="/contact" className="hover:opacity-80 transition-colors">
             Contact
           </Link>

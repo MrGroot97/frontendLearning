@@ -13,6 +13,7 @@ import SignMaker from "./components/signMaker";
 import Footer from "./footer";
 import { FC } from "react";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import UtilityDocs from "./components/utilities/components/UtilityDocs";
 
 /**
  * Main application component that sets up routing and layout
@@ -41,6 +42,7 @@ const App: FC = () => {
                 <Route path="/pagination" element={<Pagination />} />
                 <Route path="/image-slider" element={<ImageSlider />} />
                 <Route path="/sticky-notes" element={<StickyNote />} />
+                <Route path="/utilities" element={<UtilityDocs />} />
                 <Route
                   path="*"
                   element={

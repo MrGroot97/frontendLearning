@@ -12,47 +12,47 @@ import { CurrencyConverter } from "../components/currencyConverter";
 import { AltassianChart } from "../components/atlassianChart";
 
 const LLDInterviewQuestions = () => {
-    return (
-        <div className="mx-10 pt-[10px] w-[inherit]">
-            <ComponentHoc title="Uber Box Selector">
-                <UberBoxSelector />
-            </ComponentHoc>
+  return (
+    <div className="mx-10 pt-[10px] w-[inherit]">
+      <ComponentHoc title="Uber Box Selector">
+        <UberBoxSelector />
+      </ComponentHoc>
 
-            <ComponentHoc title="Country Game Microsoft">
-                <CountryGameMicrosoft />
-            </ComponentHoc>
+      <ComponentHoc title="Country Game Microsoft">
+        <CountryGameMicrosoft />
+      </ComponentHoc>
 
-            <ComponentHoc title="typeAhead/AutoSuggestions">
-                <TypeAhead />
-            </ComponentHoc>
+      <ComponentHoc title="typeAhead/AutoSuggestions">
+        <TypeAhead />
+      </ComponentHoc>
 
-            <ComponentHoc title="Accordian">
-                <Accordian />
-            </ComponentHoc>
+      <ComponentHoc title="Accordian">
+        <Accordian />
+      </ComponentHoc>
 
-            <ComponentHoc title="Nested Comments">
-                <NestedComments />
-            </ComponentHoc>
-            <ComponentHoc title="Atlassian Chart">
-                <AltassianChart />
-            </ComponentHoc>
-            <ComponentHoc title="LiveStreamChat">
-                <LiveStreamChat />
-            </ComponentHoc>
-            <ComponentHoc title="TransferList Meta">
-                <TransferList />
-            </ComponentHoc>
-            <ComponentHoc title="Currency converter">
-                <CurrencyConverter />
-            </ComponentHoc>
-            <ComponentHoc title="ForwardRef based InputComponent">
-                <InputComponent />
-            </ComponentHoc>
-            <ComponentHoc title="Portal Popup">
-                <PopupDemo />
-            </ComponentHoc>
-        </div>
-    );
+      <ComponentHoc title="Nested Comments">
+        <NestedComments />
+      </ComponentHoc>
+      <ComponentHoc title="Atlassian Chart">
+        <AltassianChart />
+      </ComponentHoc>
+      <ComponentHoc title="LiveStreamChat">
+        <LiveStreamChat />
+      </ComponentHoc>
+      <ComponentHoc title="TransferList Meta">
+        <TransferList />
+      </ComponentHoc>
+      <ComponentHoc title="Currency converter">
+        <CurrencyConverter />
+      </ComponentHoc>
+      <ComponentHoc title="ForwardRef based InputComponent">
+        <InputComponent />
+      </ComponentHoc>
+      <ComponentHoc title="Portal Popup">
+        <PopupDemo />
+      </ComponentHoc>
+    </div>
+  );
 };
 
 export default LLDInterviewQuestions;

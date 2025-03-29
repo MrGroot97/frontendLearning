@@ -12,38 +12,41 @@ body,
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  overflow: hidden; /* Hide the default scrollbar */
 }
 
-/* App container flex layout */
+/* App container flex layout - Allow scrolling at this level */
 .app-container {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Fixed height for the container */
-  width: 100%;
-  overflow: hidden; /* Hide any overflow */
-}
-
-/* Header at the top - sticky */
-header {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  z-index: 50;
-  background-color: var(--header-bg);
-  color: var(--header-text);
-  border-bottom: 1px solid var(--border-color);
-  transition: background-color 0.3s ease, color 0.3s ease,
-    border-color 0.3s ease;
 }
 
 /* Content wrapper that contains both main and footer */
 .content-wrapper {
   flex: 1;
-  overflow-y: auto; /* This creates the scrollbar */
-  overflow-x: hidden;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  padding-top: 4.5rem; /* Base padding for fixed header */
+  position: relative;
+  z-index: 1;
+  transition: padding-top 0.3s ease;
+}
+
+/* Add more padding when header has margin */
+.is-scrolled .content-wrapper {
+  padding-top: 5.5rem; /* Increased space to account for header margin */
+}
+
+/* Adjust padding-top on larger screens */
+@media (min-width: 768px) {
+  .content-wrapper {
+    padding-top: 5.5rem; /* Larger padding on desktop */
+  }
+
+  .is-scrolled .content-wrapper {
+    padding-top: 6.5rem; /* Larger padding on desktop when scrolled */
+  }
 }
 
 /* Main content area with flexible height */
@@ -117,6 +120,9 @@ html:not(.theme-transition) * {
 
   /* Add RGB values for accent color */
   --accent-color-rgb: 66, 153, 225;
+
+  /* Backdrop filter values */
+  --blur-amount: 0px;
 }
 
 /* Dark mode variables */
@@ -427,3 +433,81 @@ svg {
 .dark .forwardRefComponent button:hover {
   background-color: #1d4ed8 !important; /* dark:bg-blue-700 in dark mode */
 }
+
+/* Header wrapper to control positioning */
+.header-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  /* Use CSS variable for dynamic margin in scrolled state */
+  --header-top-margin: 0px;
+  transition: margin-top 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* Add this custom class that will be toggled via JavaScript */
+.is-scrolled .header-wrapper {
+  --header-top-margin: 12px;
+  margin-top: var(--header-top-margin);
+}
+
+/* Header styling - Progressive Animation with Backdrop Filter */
+.header {
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
+    width 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
+    border-radius 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
+    backdrop-filter 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
+    box-shadow 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
+    border 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  /* Allow backdrop filter to work by setting bg color with alpha transparency */
+  background-color: transparent;
+  will-change: width, border-radius, backdrop-filter, background-color,
+    box-shadow, border;
+  transform: translateZ(0); /* Hardware acceleration for smoother transitions */
+}
+
+/* Enhance scrolled header with glass morphism effect */
+.header[style*="backdrop-filter"] {
+  /* Use saturate effect to enhance colors slightly */
+  backdrop-filter: saturate(180%) blur(var(--blur-amount, 5px));
+  -webkit-backdrop-filter: saturate(180%) blur(var(--blur-amount, 5px));
+}
+
+/* Remove the discrete scrolled states as we now use inline styles for progressive animation */
+.dark .header {
+  /* Remove background-color so it doesn't conflict with inline styles */
+  background-color: transparent;
+}
+
+/* Support for backdrop-filter in different browsers */
+@supports (
+  (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))
+) {
+  .header {
+    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
+      backdrop-filter 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
+      background-color 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
+      width 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
+      border 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+}
+
+/* Remove media queries for discrete states as we handle responsive sizing inline */
+@media (max-width: 767px) {
+  /* Mobile styles for header */
+  .header {
+    /* Allow the inline width to control sizing without constraints */
+    /* max-width property has been removed to avoid conflicts with dynamic width */
+  }
+}
+
+@media (min-width: 768px) {
+  /* Desktop styles for header */
+  /* Empty rule kept for future use if needed */
+}
+
+/* Remove body.is-scrolled hooks as we now use progressive animation */

@@ -57,7 +57,6 @@ export const InfiniteScroll = () => {
 
     // Check if we're near the bottom
     if (scrollHeight - scrollTop - clientHeight < 200) {
-      console.log("Near bottom, fetching more data!");
       fetchData();
     }
   };

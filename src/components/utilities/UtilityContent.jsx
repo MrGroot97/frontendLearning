@@ -1,6 +1,10 @@
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import {
+  atomDark,
+  oneLight,
+} from "react-syntax-highlighter/dist/esm/styles/prism";
 import CopyButton from "./CopyButton";
+import "./syntax-highlighting.css"; // Import custom syntax highlighting styles
 
 /**
  * Component for displaying utility file code and documentation
@@ -12,6 +16,34 @@ const UtilityContent = ({
   handleCopyCode,
   copiedIndex,
 }) => {
+  // Choose the appropriate theme based on dark mode
+  const codeTheme = darkMode ? atomDark : oneLight;
+
+  // Enhanced style overrides for better readability
+  const getCodeStyles = (isDark) => ({
+    margin: 0,
+    padding: "1.5rem",
+    fontSize: "0.875rem",
+    fontFamily:
+      "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+    borderRadius: "0.375rem",
+    backgroundColor: isDark ? "#1a202c" : "#f9fafb",
+    color: isDark ? "#e2e8f0" : "#1f2937",
+    lineHeight: 1.6,
+    transition: "background-color 0.2s, color 0.2s",
+  });
+
+  // Enhanced line number styles
+  const lineNumberStyle = {
+    minWidth: "2rem",
+    paddingRight: "1rem",
+    color: darkMode ? "#718096" : "#a0aec0",
+    textAlign: "right",
+    userSelect: "none",
+    borderRight: darkMode ? "1px solid #2d3748" : "1px solid #e2e8f0",
+    marginRight: "1rem",
+  };
+
   return (
     <div
       className={`flex-1 overflow-y-auto ${
@@ -109,17 +141,14 @@ const UtilityContent = ({
                     />
                     <SyntaxHighlighter
                       language="javascript"
-                      style={atomDark}
+                      style={codeTheme}
                       showLineNumbers={true}
                       wrapLines={true}
-                      className="rounded-md !mt-0"
-                      customStyle={{
-                        margin: 0,
-                        padding: "1.5rem",
-                        fontSize: "0.875rem",
-                        backgroundColor: darkMode ? "#1a202c" : "#f7fafc",
-                        color: darkMode ? "#e2e8f0" : "#2d3748",
-                      }}
+                      lineNumberStyle={lineNumberStyle}
+                      className={`rounded-md !mt-0 shadow-sm ${
+                        darkMode ? "dark-syntax" : "light-syntax"
+                      }`}
+                      customStyle={getCodeStyles(darkMode)}
                     >
                       {file.code}
                     </SyntaxHighlighter>
@@ -160,17 +189,14 @@ const UtilityContent = ({
                     />
                     <SyntaxHighlighter
                       language="javascript"
-                      style={atomDark}
+                      style={codeTheme}
                       showLineNumbers={true}
                       wrapLines={true}
-                      className="rounded-md !mt-0"
-                      customStyle={{
-                        margin: 0,
-                        padding: "1.5rem",
-                        fontSize: "0.875rem",
-                        backgroundColor: darkMode ? "#1a202c" : "#f7fafc",
-                        color: darkMode ? "#e2e8f0" : "#2d3748",
-                      }}
+                      lineNumberStyle={lineNumberStyle}
+                      className={`rounded-md !mt-0 shadow-sm ${
+                        darkMode ? "dark-syntax" : "light-syntax"
+                      }`}
+                      customStyle={getCodeStyles(darkMode)}
                     >
                       {file.usage}
                     </SyntaxHighlighter>

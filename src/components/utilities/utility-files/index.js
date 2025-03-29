@@ -1,7 +1,7 @@
 /**
  * @deprecated This file is maintained for backward compatibility.
- * Please import from '../functions' instead.
+ * Please import from '../hooks' instead.
  */
-import utilityFunctions from "../functions";
+import utilityHooks from "../hooks";
 
-export default utilityFunctions;
+export default utilityHooks;

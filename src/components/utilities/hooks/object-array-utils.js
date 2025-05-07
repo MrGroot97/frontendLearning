@@ -7,6 +7,221 @@ const objectArrayUtils = {
     "Advanced utilities for manipulating complex objects and arrays.",
   files: [
     {
+      name: "myReduce",
+      description: "Polyfill implementation of Array.prototype.reduce method.",
+      code: `export function myReduce(array, callback, initialValue) {
+    if (!Array.isArray(array)) {
+        throw new TypeError('First argument must be an array');
+    }
+    
+    if (typeof callback !== 'function') {
+        throw new TypeError('Second argument must be a function');
+    }
+    
+    const len = array.length;
+    
+    // If array is empty and no initialValue, throw an error
+    if (len === 0 && initialValue === undefined) {
+        throw new TypeError('Reduce of empty array with no initial value');
+    }
+    
+    let accumulator;
+    let startIndex;
+    
+    // If initialValue is provided, use it as accumulator and start from index 0
+    // Otherwise, use first element as accumulator and start from index 1
+    if (initialValue !== undefined) {
+        accumulator = initialValue;
+        startIndex = 0;
+    } else {
+        // Find the first initialized index in the array
+        let firstInitializedIndex = 0;
+        while (firstInitializedIndex < len && !(firstInitializedIndex in array)) {
+            firstInitializedIndex++;
+        }
+        
+        // If no initialized element is found, throw an error
+        if (firstInitializedIndex >= len) {
+            throw new TypeError('Reduce of empty array with no initial value');
+        }
+        
+        accumulator = array[firstInitializedIndex];
+        startIndex = firstInitializedIndex + 1;
+    }
+    
+    // Perform the reduction
+    for (let i = startIndex; i < len; i++) {
+        // Only call callback for indexes that have been initialized
+        if (i in array) {
+            accumulator = callback(accumulator, array[i], i, array);
+        }
+    }
+    
+    return accumulator;
+}`,
+      usage: `// Example: Sum an array of numbers
+const numbers = [1, 2, 3, 4, 5];
+const sum = myReduce(numbers, (acc, curr) => acc + curr, 0);
+console.log(sum); // 15
+
+// Example: Without initial value - first element becomes the initial accumulator
+const product = myReduce(numbers, (acc, curr) => acc * curr);
+console.log(product); // 120 (1*2*3*4*5)
+
+// Example: Creating an object from an array
+const fruits = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple'];
+const fruitCount = myReduce(fruits, (acc, fruit) => {
+    acc[fruit] = (acc[fruit] || 0) + 1;
+    return acc;
+}, {});
+console.log(fruitCount); // { apple: 3, banana: 2, orange: 1 }
+
+// Example: Flattening an array of arrays
+const nestedArrays = [[1, 2], [3, 4], [5, 6]];
+const flattened = myReduce(nestedArrays, (acc, curr) => acc.concat(curr), []);
+console.log(flattened); // [1, 2, 3, 4, 5, 6]
+
+// Example: Composing functions
+const double = x => x * 2;
+const square = x => x * x;
+const addOne = x => x + 1;
+
+const compose = functions => myReduce(
+    functions, 
+    (acc, fn) => value => acc(fn(value)),
+    value => value
+);
+
+const pipeline = compose([addOne, square, double]);
+console.log(pipeline(3)); // double(square(addOne(3))) = double(square(4)) = double(16) = 32`,
+      notes: [
+        "Implements the same behavior as the native Array.prototype.reduce method",
+        "Handles edge cases like empty arrays and missing initial values",
+        "Properly skips uninitialized array elements (holes in sparse arrays)",
+        "Throws appropriate errors when required (empty array with no initial value)",
+        "Very versatile - can be used to implement map, filter, find, and many other array methods",
+        "The accumulator retains its type throughout the reduction, allowing complex transformations",
+      ],
+    },
+    {
+      name: "deepEqual",
+      description:
+        "Compares two values for deep equality, including nested objects and arrays.",
+      code: `export function deepEqual(obj1, obj2) {
+    // Check if the references are identical
+    if (obj1 === obj2) return true;
+    
+    // If either value is null or not an object, they can't be deep equal
+    if (obj1 === null || obj2 === null || 
+        (typeof obj1 !== 'object' && typeof obj2 !== 'object')) {
+        return obj1 === obj2;
+    }
+    
+    // Get all keys from both objects
+    const keys1 = Object.keys(obj1);
+    const keys2 = Object.keys(obj2);
+    
+    // If the number of keys is different, they're not equal
+    if (keys1.length !== keys2.length) return false;
+    
+    // Check if all keys from obj1 are in obj2 with the same values
+    for (const key of keys1) {
+        if (!keys2.includes(key)) return false;
+        
+        // Recursively check if the values are equal
+        if (!deepEqual(obj1[key], obj2[key])) return false;
+    }
+    
+    return true;
+}`,
+      usage: `// Example: Comparing two complex objects
+const obj1 = { 
+    name: 'John', 
+    address: { city: 'New York', zip: 10001 },
+    hobbies: ['reading', 'coding']
+};
+
+const obj2 = { 
+    name: 'John', 
+    address: { city: 'New York', zip: 10001 },
+    hobbies: ['reading', 'coding']
+};
+
+const areEqual = deepEqual(obj1, obj2); // true
+
+const obj3 = { 
+    name: 'John', 
+    address: { city: 'Boston', zip: 10001 }, 
+    hobbies: ['reading', 'coding']
+};
+
+const areEqual2 = deepEqual(obj1, obj3); // false`,
+      notes: [
+        "More reliable than === for comparing objects or arrays",
+        "Useful in React's shouldComponentUpdate or useMemo dependencies",
+        "Can be performance-intensive for very large or deeply nested objects",
+        "Consider adding special handling for Date objects, RegExp, and other complex types",
+      ],
+    },
+    {
+      name: "deepClone",
+      description:
+        "Creates a deep copy of an object or array, including all nested values.",
+      code: `export function deepClone(obj) {
+    // Handle primitive types and null
+    if (obj === null || typeof obj !== 'object') {
+        return obj;
+    }
+    
+    // Handle Date objects
+    if (obj instanceof Date) {
+        return new Date(obj.getTime());
+    }
+    
+    // Handle Array objects
+    if (Array.isArray(obj)) {
+        return obj.map(item => deepClone(item));
+    }
+    
+    // Handle Object objects
+    const clonedObj = {};
+    for (const key in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+            clonedObj[key] = deepClone(obj[key]);
+        }
+    }
+    
+    return clonedObj;
+}`,
+      usage: `// Example: Creating a deep copy of a nested object
+const original = {
+    user: {
+        name: 'Alice',
+        settings: {
+            theme: 'dark',
+            notifications: true
+        }
+    },
+    posts: [1, 2, 3]
+};
+
+const copy = deepClone(original);
+
+// Modify the copy without affecting the original
+copy.user.settings.theme = 'light';
+copy.posts.push(4);
+
+console.log(original.user.settings.theme); // 'dark'
+console.log(original.posts); // [1, 2, 3]`,
+      notes: [
+        "Use when you need a completely separate copy of an object",
+        "JSON.parse(JSON.stringify()) is faster but doesn't handle functions, undefined, or circular references",
+        "This implementation handles Date objects specially, but might need extensions for Maps, Sets, etc.",
+        "Be aware of performance considerations for very large objects",
+        "Does not handle circular references - will cause stack overflow",
+      ],
+    },
+    {
       name: "flattenArray",
       description: "Flattens a nested array into a single-level array.",
       code: `export function flattenArray(arr) {

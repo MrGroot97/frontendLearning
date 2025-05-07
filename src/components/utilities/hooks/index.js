@@ -1,10 +1,10 @@
 import debounceAndThrottle from "./debounce-and-throttle";
-import deepEqualAndClone from "./deep-equal-and-clone";
 import promiseUtils from "./promise-utils";
 import arrayUtils from "./array-utils";
 import objectArrayUtils from "./object-array-utils";
 import jsLanguageUtils from "./js-language-utils";
 import domUtils from "./dom-utils";
+import functionalUtils from "./functional-utils";
 
 /**
  * Collection of all utility hooks and functions grouped by category
@@ -26,7 +26,7 @@ const utilityHooks = {
   "Data Manipulation": {
     description:
       "Utilities for working with objects, arrays, and data structures",
-    files: [deepEqualAndClone, arrayUtils, objectArrayUtils],
+    files: [arrayUtils, objectArrayUtils],
   },
   "Async & Promises": {
     description: "Functions for async operations and promise handling",
@@ -41,6 +41,11 @@ const utilityHooks = {
     description: "Utilities for DOM manipulation and browser interactions",
     files: [domUtils],
   },
+  "Functional Programming": {
+    description:
+      "Utilities for functional programming paradigms like compose, pipe, and curry",
+    files: [functionalUtils],
+  },
   // Additional categories can be added as more utility files are created
 };
 
@@ -49,10 +54,10 @@ export default utilityHooks;
 // Named exports for direct use of individual utilities
 export {
   debounceAndThrottle,
-  deepEqualAndClone,
   promiseUtils,
   arrayUtils,
   objectArrayUtils,
   jsLanguageUtils,
   domUtils,
+  functionalUtils,
 };

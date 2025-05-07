@@ -36,6 +36,7 @@ This project showcases various common frontend components and patterns that are 
   - Modern animations and transitions
   - Clean and intuitive user interface
   - Developer profile showcase
+  - Accessible components with Radix UI primitives
 
 - **Developer Experience**:
   - TypeScript for type safety and better IDE integration
@@ -43,6 +44,7 @@ This project showcases various common frontend components and patterns that are 
   - Modern module resolution with path aliases
   - Full ESLint integration for TypeScript files
   - Type checking in build process
+  - Zustand for simple and efficient state management
 
 ## 🛠️ Technologies Used
 
@@ -51,6 +53,8 @@ This project showcases various common frontend components and patterns that are 
 - Vite
 - React Router DOM
 - Tailwind CSS
+- Zustand (for state management)
+- Radix UI (for accessible UI components)
 - Typed.js (for typing animations)
 - React Icons
 - SWC (for Fast Refresh)
@@ -127,6 +131,102 @@ npm run type-check
 yarn type-check
 ```
 
+## 🗃️ Zustand State Management
+
+This project uses Zustand for state management. Zustand provides a simple and efficient way to manage state in React applications.
+
+### Adding Zustand to Your Project
+
+```bash
+npm install zustand
+# or
+yarn add zustand
+```
+
+### Creating a Store
+
+```typescript
+// src/stores/useCounterStore.ts
+import { create } from 'zustand';
+
+interface CounterState {
+  count: number;
+  increment: () => void;
+  decrement: () => void;
+  reset: () => void;
+}
+
+const useCounterStore = create<CounterState>((set) => ({
+  count: 0,
+  increment: () => set((state) => ({ count: state.count + 1 })),
+  decrement: () => set((state) => ({ count: state.count - 1 })),
+  reset: () => set({ count: 0 }),
+}));
+
+export default useCounterStore;
+```
+
+### Using the Store in Components
+
+```tsx
+// src/components/Counter.tsx
+import React from 'react';
+import useCounterStore from '../stores/useCounterStore';
+
+const Counter: React.FC = () => {
+  const { count, increment, decrement, reset } = useCounterStore();
+
+  return (
+    <div>
+      <h2>Count: {count}</h2>
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
+      <button onClick={reset}>Reset</button>
+    </div>
+  );
+};
+
+export default Counter;
+```
+
+## 🧩 Radix UI Components
+
+This project uses Radix UI for building accessible, high-quality UI components.
+
+### Adding Radix UI to Your Project
+
+```bash
+npm install @radix-ui/react-dropdown-menu @radix-ui/react-dialog
+# or
+yarn add @radix-ui/react-dropdown-menu @radix-ui/react-dialog
+```
+
+### Using Radix UI Components
+
+```tsx
+// src/components/AccessibleDropdown.tsx
+import React from 'react';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+
+const AccessibleDropdown: React.FC = () => {
+  return (
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger className="button">Options</DropdownMenu.Trigger>
+      <DropdownMenu.Portal>
+        <DropdownMenu.Content className="dropdown-content">
+          <DropdownMenu.Item className="dropdown-item">Profile</DropdownMenu.Item>
+          <DropdownMenu.Item className="dropdown-item">Settings</DropdownMenu.Item>
+          <DropdownMenu.Separator className="dropdown-separator" />
+          <DropdownMenu.Item className="dropdown-item">Logout</DropdownMenu.Item>
+        </DropdownMenu.Content>
+      </DropdownMenu.Portal>
+    </DropdownMenu.Root>
+  );
+};
+
+export default AccessibleDropdown;
+```
+
 ## 🧩 TypeScript Migration Guide
 
 This project supports a gradual migration approach from JavaScript to TypeScript:
@@ -187,6 +287,7 @@ src/
 ├── footer/            # Footer component
 ├── lib/               # Utility libraries
 ├── lldInterviewQuestions/ # Low-level design interview questions
+├── stores/            # Zustand stores
 ├── utils/             # Utility functions
 ├── App.tsx            # Main application component
 ├── main.tsx           # Application entry point

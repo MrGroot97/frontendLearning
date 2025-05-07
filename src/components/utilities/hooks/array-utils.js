@@ -7,6 +7,117 @@ const arrayUtils = {
     "Helper functions for common array operations and manipulations.",
   files: [
     {
+      name: "myMap",
+      description: "Polyfill implementation of Array.prototype.map method.",
+      code: `export function myMap(array, callback, thisArg) {
+    if (!Array.isArray(array)) {
+        throw new TypeError('First argument must be an array');
+    }
+    
+    if (typeof callback !== 'function') {
+        throw new TypeError('Second argument must be a function');
+    }
+    
+    const result = [];
+    
+    for (let i = 0; i < array.length; i++) {
+        // Only call callback for indexes that have been initialized
+        if (i in array) {
+            result[i] = callback.call(thisArg, array[i], i, array);
+        }
+    }
+    
+    return result;
+}`,
+      usage: `// Example: Transform an array of numbers
+const numbers = [1, 2, 3, 4, 5];
+const doubled = myMap(numbers, num => num * 2);
+console.log(doubled); // [2, 4, 6, 8, 10]
+
+// Example: Using thisArg to access context
+const formatter = {
+    prefix: '$',
+    format(price) {
+        return \`\${this.prefix}\${price.toFixed(2)}\`;
+    }
+};
+
+const prices = [10, 24.5, 100, 59.99];
+const formattedPrices = myMap(prices, formatter.format, formatter);
+console.log(formattedPrices); // ['$10.00', '$24.50', '$100.00', '$59.99']
+
+// Example: Dealing with sparse arrays (holes)
+const sparseArray = [1, , 3, , 5];
+const doubled2 = myMap(sparseArray, num => num * 2);
+console.log(doubled2); // [2, empty, 6, empty, 10]`,
+      notes: [
+        "Implements the same behavior as the native Array.prototype.map method",
+        "Preserves sparse array holes (undefined or uninitialized elements)",
+        "Supports the optional thisArg parameter for setting 'this' inside the callback",
+        "Creates a new array without modifying the original",
+        "Throws a TypeError if the first argument is not an array or the second is not a function",
+      ],
+    },
+    {
+      name: "myFilter",
+      description: "Polyfill implementation of Array.prototype.filter method.",
+      code: `export function myFilter(array, callback, thisArg) {
+    if (!Array.isArray(array)) {
+        throw new TypeError('First argument must be an array');
+    }
+    
+    if (typeof callback !== 'function') {
+        throw new TypeError('Second argument must be a function');
+    }
+    
+    const result = [];
+    
+    for (let i = 0; i < array.length; i++) {
+        // Only call callback for indexes that have been initialized
+        if (i in array) {
+            const value = array[i];
+            if (callback.call(thisArg, value, i, array)) {
+                result.push(value);
+            }
+        }
+    }
+    
+    return result;
+}`,
+      usage: `// Example: Filter even numbers
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const evenNumbers = myFilter(numbers, num => num % 2 === 0);
+console.log(evenNumbers); // [2, 4, 6, 8, 10]
+
+// Example: Filter objects based on a property
+const products = [
+    { name: 'Phone', price: 999, inStock: true },
+    { name: 'Laptop', price: 1299, inStock: true },
+    { name: 'Tablet', price: 699, inStock: false },
+    { name: 'Watch', price: 399, inStock: true },
+    { name: 'Headphones', price: 199, inStock: false }
+];
+
+const availableProducts = myFilter(products, product => product.inStock);
+console.log(availableProducts); 
+// Outputs only the products where inStock is true
+
+const affordableProducts = myFilter(
+    products, 
+    function(product) { return product.price < this.maxPrice; }, 
+    { maxPrice: 700 }
+);
+console.log(affordableProducts); 
+// Outputs products with price less than 700`,
+      notes: [
+        "Implements the same behavior as the native Array.prototype.filter method",
+        "Returns a new array with elements that pass the test in the callback function",
+        "Preserves sparse array behavior (skips uninitialized elements)",
+        "Supports the optional thisArg parameter for setting 'this' inside the callback",
+        "The callback function should return a truthy value to include the element in the result",
+      ],
+    },
+    {
       name: "groupBy",
       description: "Groups an array of objects by a specified key or property.",
       code: `export function groupBy(array, key) {

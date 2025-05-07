@@ -1,7 +1,7 @@
 import "./App.css";
 import Header from "./components/header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import LLDInterviewQuestions from "./lldInterviewQuestions";
+import LLDInterviewQuestions from "./machineCoding";
 import Home from "./components/home";
 import ContactMe from "./components/contantPage";
 import Footer from "./footer";

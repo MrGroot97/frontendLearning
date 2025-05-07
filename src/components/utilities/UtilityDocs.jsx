@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useTheme } from "../../contexts/ThemeContext";
 import UtilitySidebar from "./UtilitySidebar";
 import UtilityContent from "./UtilityContent";
-import utilityFiles from "./utility-files";
+import utilityFiles from "./hooks";
 
 /**
  * Component that displays utility functions with syntax highlighting and explanations

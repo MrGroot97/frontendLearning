@@ -69,6 +69,9 @@ export const ImageSlider = () => {
               "object-cover w-full h-full transition-transform duration-500 ease-in-out transform", 
               animate && "animate-slide-in"
             )}
+            style={{
+              viewTransitionName: `image-${index}`
+            }}
           />
         </div>
         <div

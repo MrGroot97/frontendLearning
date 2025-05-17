@@ -26,16 +26,16 @@ const LLDContent = ({ darkMode, currentQuestion, activeCategory }) => {
             componentModule = await import("../../components/typeAhead");
             setComponent(() => componentModule.default);
             break;
+          case "tabs":
+            componentModule = await import("../../components/tabs/TabsDemo");
+            setComponent(() => componentModule.default);
+            break;
           case "currencyConverter":
-            componentModule = await import(
-              "../../components/currencyConverter"
-            );
+            componentModule = await import("../../components/currencyConverter");
             setComponent(() => componentModule.CurrencyConverter);
             break;
           case "forwardRefComponent":
-            componentModule = await import(
-              "../../components/forwardRefComponent"
-            );
+            componentModule = await import("../../components/forwardRefComponent");
             setComponent(() => componentModule.InputComponent);
             break;
           case "uberBoxSelector":
@@ -55,9 +55,7 @@ const LLDContent = ({ darkMode, currentQuestion, activeCategory }) => {
             setComponent(() => componentModule.Accordian);
             break;
           case "countryGameMicrosoft":
-            componentModule = await import(
-              "../../components/countryGameMicrosoft"
-            );
+            componentModule = await import("../../components/countryGameMicrosoft");
             setComponent(() => componentModule.default);
             break;
           case "popup":
@@ -69,12 +67,9 @@ const LLDContent = ({ darkMode, currentQuestion, activeCategory }) => {
             setComponent(() => componentModule.NestedComments);
             break;
           case "youtubeLiveStremChat":
-            componentModule = await import(
-              "../../components/youtubeLiveStremChat"
-            );
+            componentModule = await import("../../components/youtubeLiveStremChat");
             setComponent(() => componentModule.LiveStreamChat);
             break;
-          // Additional components
           case "infiniteScroll":
             componentModule = await import("../../components/infiniteScroll");
             setComponent(() => componentModule.InfiniteScroll);
@@ -84,9 +79,7 @@ const LLDContent = ({ darkMode, currentQuestion, activeCategory }) => {
             setComponent(() => componentModule.ImageSlider);
             break;
           case "confluenceTreeStructure":
-            componentModule = await import(
-              "../../components/confluenceTreeStructure"
-            );
+            componentModule = await import("../../components/confluenceTreeStructure");
             setComponent(() => componentModule.ConfluenceTreeStructure);
             break;
           case "pagination":
@@ -102,9 +95,7 @@ const LLDContent = ({ darkMode, currentQuestion, activeCategory }) => {
             setComponent(() => componentModule.default);
             break;
           default:
-            console.error(
-              `Component ${currentQuestion.componentName} not found`
-            );
+            console.error(`Component ${currentQuestion.componentName} not found`);
             setComponent(null);
         }
       } catch (error) {
@@ -119,11 +110,7 @@ const LLDContent = ({ darkMode, currentQuestion, activeCategory }) => {
   }, [currentQuestion]);
 
   return (
-    <div
-      className={`flex-1 overflow-y-auto ${
-        darkMode ? "bg-gray-900" : "bg-white"
-      }`}
-    >
+    <div className={`flex-1 overflow-y-auto ${darkMode ? "bg-gray-900" : "bg-white"}`}>
       <div className="max-w-4xl mx-auto p-6 relative">
         {/* GitHub button */}
         <a
@@ -141,35 +128,17 @@ const LLDContent = ({ darkMode, currentQuestion, activeCategory }) => {
           <span>GitHub</span>
         </a>
 
-        <div
-          className={`flex flex-col md:flex-row md:items-center mb-6 pb-4 border-b ${
-            darkMode ? "border-gray-700" : "border-gray-300"
-          }`}
-        >
-          <h1
-            className={`text-3xl font-bold ${
-              darkMode ? "text-white" : "text-gray-800"
-            }`}
-          >
+        <div className={`flex flex-col md:flex-row md:items-center mb-6 pb-4 border-b ${darkMode ? "border-gray-700" : "border-gray-300"}`}>
+          <h1 className={`text-3xl font-bold ${darkMode ? "text-white" : "text-gray-800"}`}>
             {currentQuestion.title}
           </h1>
-          <div
-            className={`mt-2 md:mt-0 md:ml-3 px-3 py-1 rounded-full text-sm ${
-              darkMode
-                ? "bg-gray-700 text-blue-300"
-                : "bg-blue-100 text-blue-600"
-            }`}
-          >
+          <div className={`mt-2 md:mt-0 md:ml-3 px-3 py-1 rounded-full text-sm ${darkMode ? "bg-gray-700 text-blue-300" : "bg-blue-100 text-blue-600"}`}>
             {activeCategory}
           </div>
         </div>
 
         {currentQuestion.description && (
-          <div
-            className={`text-lg mb-8 ${
-              darkMode ? "text-gray-300" : "text-gray-700"
-            }`}
-          >
+          <div className={`text-lg mb-8 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
             {currentQuestion.description}
           </div>
         )}
@@ -177,20 +146,10 @@ const LLDContent = ({ darkMode, currentQuestion, activeCategory }) => {
         {/* Problem Statement */}
         {currentQuestion.problemStatement && (
           <div className="mb-8">
-            <h2
-              className={`text-xl font-bold mb-3 ${
-                darkMode ? "text-blue-400" : "text-blue-600"
-              }`}
-            >
+            <h2 className={`text-xl font-bold mb-3 ${darkMode ? "text-blue-400" : "text-blue-600"}`}>
               Problem Statement
             </h2>
-            <div
-              className={`p-4 border rounded-lg ${
-                darkMode
-                  ? "bg-gray-800 border-gray-700"
-                  : "bg-gray-50 border-gray-300"
-              }`}
-            >
+            <div className={`p-4 border rounded-lg ${darkMode ? "bg-gray-800 border-gray-700" : "bg-gray-50 border-gray-300"}`}>
               <p className={darkMode ? "text-gray-300" : "text-gray-700"}>
                 {currentQuestion.problemStatement}
               </p>
@@ -199,110 +158,57 @@ const LLDContent = ({ darkMode, currentQuestion, activeCategory }) => {
         )}
 
         {/* Requirements or Constraints */}
-        {currentQuestion.requirements &&
-          currentQuestion.requirements.length > 0 && (
-            <div className="mb-8">
-              <h2
-                className={`text-xl font-bold mb-3 ${
-                  darkMode ? "text-blue-400" : "text-blue-600"
-                }`}
-              >
-                Requirements
-              </h2>
-              <div
-                className={`p-4 border rounded-lg ${
-                  darkMode
-                    ? "bg-gray-800 border-gray-700"
-                    : "bg-gray-50 border-gray-300"
-                }`}
-              >
-                <ul
-                  className={`list-disc pl-5 ${
-                    darkMode ? "text-gray-300" : "text-gray-700"
-                  }`}
-                >
-                  {currentQuestion.requirements.map((req, index) => (
-                    <li key={index} className="mb-1">
-                      {req}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+        {currentQuestion.requirements && currentQuestion.requirements.length > 0 && (
+          <div className="mb-8">
+            <h2 className={`text-xl font-bold mb-3 ${darkMode ? "text-blue-400" : "text-blue-600"}`}>
+              Requirements
+            </h2>
+            <div className={`p-4 border rounded-lg ${darkMode ? "bg-gray-800 border-gray-700" : "bg-gray-50 border-gray-300"}`}>
+              <ul className={`list-disc pl-5 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
+                {currentQuestion.requirements.map((req, index) => (
+                  <li key={index} className="mb-1">{req}</li>
+                ))}
+              </ul>
             </div>
-          )}
+          </div>
+        )}
 
         {/* Component Demo */}
         <div className="mb-8">
-          <h2
-            className={`text-xl font-bold mb-3 ${
-              darkMode ? "text-blue-400" : "text-blue-600"
-            }`}
-          >
+          <h2 className={`text-xl font-bold mb-3 ${darkMode ? "text-blue-400" : "text-blue-600"}`}>
             Interactive Demo
           </h2>
-          <div
-            className={`p-6 border rounded-lg ${
-              darkMode ? "border-gray-700" : "border-gray-300"
-            }`}
-          >
+          <div className={`p-6 border rounded-lg ${darkMode ? "border-gray-700" : "border-gray-300"}`}>
             {loading ? (
-              <div
-                className={`text-center py-10 ${
-                  darkMode ? "text-gray-300" : "text-gray-600"
-                }`}
-              >
+              <div className={`text-center py-10 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
                 <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500 mr-2"></div>
                 <span>Loading component...</span>
               </div>
             ) : Component ? (
               <Component />
             ) : (
-              <div
-                className={`text-center py-10 ${
-                  darkMode ? "text-red-400" : "text-red-600"
-                }`}
-              >
-                <p>
-                  Could not load the component. Please check the console for
-                  errors.
-                </p>
+              <div className={`text-center py-10 ${darkMode ? "text-red-400" : "text-red-600"}`}>
+                <p>Could not load the component. Please check the console for errors.</p>
               </div>
             )}
           </div>
         </div>
 
         {/* Key Takeaways */}
-        {currentQuestion.keyTakeaways &&
-          currentQuestion.keyTakeaways.length > 0 && (
-            <div className="mb-8">
-              <h2
-                className={`text-xl font-bold mb-3 ${
-                  darkMode ? "text-blue-400" : "text-blue-600"
-                }`}
-              >
-                Key Takeaways
-              </h2>
-              <div
-                className={`p-4 border rounded-lg ${
-                  darkMode
-                    ? "bg-gray-800 border-gray-700"
-                    : "bg-gray-50 border-gray-300"
-                }`}
-              >
-                <ul
-                  className={`list-disc pl-5 ${
-                    darkMode ? "text-gray-300" : "text-gray-700"
-                  }`}
-                >
-                  {currentQuestion.keyTakeaways.map((takeaway, index) => (
-                    <li key={index} className="mb-1">
-                      {takeaway}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+        {currentQuestion.keyTakeaways && currentQuestion.keyTakeaways.length > 0 && (
+          <div className="mb-8">
+            <h2 className={`text-xl font-bold mb-3 ${darkMode ? "text-blue-400" : "text-blue-600"}`}>
+              Key Takeaways
+            </h2>
+            <div className={`p-4 border rounded-lg ${darkMode ? "bg-gray-800 border-gray-700" : "bg-gray-50 border-gray-300"}`}>
+              <ul className={`list-disc pl-5 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
+                {currentQuestion.keyTakeaways.map((takeaway, index) => (
+                  <li key={index} className="mb-1">{takeaway}</li>
+                ))}
+              </ul>
             </div>
-          )}
+          </div>
+        )}
       </div>
     </div>
   );

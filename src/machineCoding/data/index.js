@@ -195,6 +195,27 @@ const lldQuestions = {
     description: "UI components that provide rich user interactions",
     components: [
       {
+        title: "Tabs Component",
+        description: "A reusable tabs component with accessibility and keyboard navigation",
+        problemStatement: "Create a tabs component that allows users to switch between different content panels with proper accessibility support and keyboard navigation.",
+        requirements: [
+          "Support dynamic tab creation and content switching",
+          "Implement keyboard navigation (left/right arrows, home/end)",
+          "Ensure proper ARIA attributes and roles",
+          "Support both controlled and uncontrolled modes",
+          "Handle tab focus management",
+          "Provide smooth transitions between tabs"
+        ],
+        keyTakeaways: [
+          "Implementing WAI-ARIA patterns for tabs",
+          "Managing focus and keyboard interactions",
+          "Creating reusable and flexible components",
+          "Handling dynamic content loading"
+        ],
+        componentName: "Tabs",
+        componentPath: "tabs"
+      },
+      {
         title: "Accordian",
         description: "An accordion component for collapsible content sections",
         problemStatement:

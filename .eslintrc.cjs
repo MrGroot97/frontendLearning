@@ -36,6 +36,15 @@ module.exports = {
       files: ["*.ts", "*.tsx"],
       parser: "@typescript-eslint/parser",
       plugins: ["@typescript-eslint"],
+      rules: {
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": ["error", {
+          "varsIgnorePattern": "^_",
+          "argsIgnorePattern": "^_",
+          "ignoreRestSiblings": true,
+          "args": "none"
+        }]
+      }
     },
   ],
 };

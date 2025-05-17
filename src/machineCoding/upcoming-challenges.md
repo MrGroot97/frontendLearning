@@ -26,8 +26,8 @@ A feature-rich Todo application with advanced functionality to demonstrate React
 
 | Challenge | Description | Key Skills |
 |-----------|-------------|------------|
-| **Tic-Tac-Toe Game** | Interactive game with win detection, history tracking, and AI opponent option | Game state management, Minimax algorithm, UI transitions |
-| **Tabs Component** | Accessible tabbed interface with keyboard navigation and dynamic content loading | ARIA roles, Focus management, Content switching |
+| ✅ **Tic-Tac-Toe Game** | Implemented with TypeScript, featuring flexible board size (3x3 to 8x8), move history, dark mode support, and accessibility features. Future enhancements: AI opponent, multiplayer support | Game state management, TypeScript, Dynamic Grid Layout, Accessibility |
+| ✅ **Tabs Component** | Implemented with full accessibility support, keyboard navigation, dark mode, and Tailwind CSS styling | ARIA roles, Focus management, Content switching, Dark mode theming |
 | **Parallel Progress Bars** | Multiple progress bars running simultaneously with configurable speeds and limits | Async state management, requestAnimationFrame, CSS transitions |
 | **OTP Input Component** | Multi-field one-time password input with auto-focus and paste support | Controlled inputs, Ref forwarding, Input validation |
 | **Ride Sharing Map** | Interactive map with driver/rider locations, routing, and ETA calculations | Map API integration (Google/Mapbox), Geolocation, Route visualization |

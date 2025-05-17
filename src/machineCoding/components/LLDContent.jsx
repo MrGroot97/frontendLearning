@@ -26,6 +26,10 @@ const LLDContent = ({ darkMode, currentQuestion, activeCategory }) => {
             componentModule = await import("../../components/typeAhead");
             setComponent(() => componentModule.default);
             break;
+          case "tic-tac-toe":
+            componentModule = await import("../../components/tic-tac-toe/TicTacToe");
+            setComponent(() => componentModule.default);
+            break;
           case "tabs":
             componentModule = await import("../../components/tabs/TabsDemo");
             setComponent(() => componentModule.default);

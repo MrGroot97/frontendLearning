@@ -195,6 +195,32 @@ const lldQuestions = {
     description: "UI components that provide rich user interactions",
     components: [
       {
+        title: "Tic-Tac-Toe Game",
+        description: "A fully-featured Tic-Tac-Toe game with flexible board size, dark mode, and accessibility support",
+        problemStatement: "Create a Tic-Tac-Toe game with customizable board size (3x3 to 8x8), move history, dark mode support, and full accessibility features including keyboard navigation and screen reader support.",
+        requirements: [
+          "Implement complete game logic with dynamic win detection",
+          "Support flexible board sizes from 3x3 to 8x8",
+          "Support move history with time travel functionality",
+          "Add dark mode support with smooth transitions",
+          "Ensure full keyboard navigation and ARIA support",
+          "Handle game state (win/draw conditions)",
+          "Provide visual feedback for winning combinations",
+          "Support game reset and history navigation",
+          "Allow changing board size with game state reset"
+        ],
+        keyTakeaways: [
+          "Managing complex game state with TypeScript",
+          "Implementing dynamic grid layouts",
+          "Creating flexible win detection algorithms",
+          "Implementing accessibility patterns for games",
+          "Creating responsive and theme-aware components",
+          "Handling user interactions and game logic"
+        ],
+        componentName: "TicTacToe",
+        componentPath: "tic-tac-toe"
+      },
+      {
         title: "Tabs Component",
         description: "A reusable tabs component with accessibility and keyboard navigation",
         problemStatement: "Create a tabs component that allows users to switch between different content panels with proper accessibility support and keyboard navigation.",

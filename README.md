@@ -29,6 +29,8 @@ This project showcases various common frontend components and patterns that are 
   - Uber Box Selector
   - YouTube Live Stream Chat
   - Atlassian Chart
+  - Tabs Component (Accessible, Dark Mode Support)
+  - Tic-Tac-Toe Game (Flexible Board Size, Dark Mode, Move History)
 
 - **UI Features**:
 

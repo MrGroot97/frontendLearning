@@ -14,6 +14,13 @@ This project showcases various common frontend components and patterns that are 
   - Image Slider
   - Confluence Tree Structure
   - Pagination
+    - Responsive product grid layout
+    - Keyboard navigation (←/→ arrow keys)
+    - Accessible controls with ARIA attributes
+    - Dynamic page size handling
+    - Sticky pagination controls
+    - Dark mode support
+    - Visual feedback for interactions
   - Sticky Notes
   - Sign Maker
   - LLD Interview Questions
@@ -98,6 +105,48 @@ This project showcases various common frontend components and patterns that are 
 ## 📖 Usage
 
 Browse through the different components using the navigation menu. Each component demonstrates a specific implementation pattern commonly asked in JavaScript/React interviews.
+
+### Pagination Component
+
+The Pagination component showcases a modern, accessible implementation with the following features:
+
+```jsx
+// Example usage of Pagination component
+import { Pagination } from './components/pagination';
+
+function App() {
+  return (
+    <div>
+      <h1>Product Catalog</h1>
+      <Pagination />
+    </div>
+  );
+}
+```
+
+Key Features:
+- Keyboard Navigation:
+  - Use Left Arrow (←) to go to previous page
+  - Use Right Arrow (→) to go to next page
+  - Keyboard controls are disabled when input fields are focused
+
+- Accessibility:
+  - ARIA labels for all interactive elements
+  - Screen reader support with descriptive labels
+  - Clear visual indicators for current page
+  - Proper semantic HTML structure
+
+- Styling:
+  - Responsive product grid layout
+  - Sticky pagination controls
+  - Visual feedback for interactions
+  - Dark mode support
+  - Modern UI with hover and active states
+
+- Error Handling:
+  - Graceful handling of API failures
+  - Loading states for better UX
+  - Boundary checks for page navigation
 
 ## 🏗️ Build
 

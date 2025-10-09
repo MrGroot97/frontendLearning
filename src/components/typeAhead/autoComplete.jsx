@@ -2,7 +2,7 @@
 import clsx from "clsx";
 import { useEffect, useState, useRef } from "react";
 import { SuggestionList } from "./suggestionList";
-import { debounce } from "./../../utils";
+import { debounce } from "@/polyfills/utilities/debounce";
 
 
 export const AutoComplete = (props) => {

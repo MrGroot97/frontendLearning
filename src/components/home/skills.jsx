@@ -16,6 +16,7 @@ import {
 } from "react-icons/si";
 import { DiRedis } from "react-icons/di";
 import clsx from "clsx";
+import "./running-trail.css";
 
 const skillsList = [
   { Icon: TiHtml5, name: "HTML5", className: "hover:text-red-500" },
@@ -71,20 +72,22 @@ const Logo = ({ Icon, name, className }) => {
 
 const Skills = () => {
   return (
-    <div className="skills">
-      <div className="skills-list-1">
-        {skillsList
-          .slice(0, Math.floor(skillsList.length / 2))
-          .map((skill, index) => (
-            <Logo key={`${index}_${skill.name}`} {...skill} />
-          ))}
-      </div>
-      <div className="skills-list-2">
-        {skillsList
-          .slice(Math.floor(skillsList.length / 2))
-          .map((skill, index) => (
-            <Logo key={`${index}_${skill.name}`} {...skill} />
-          ))}
+    <div className="running-trail-container">
+      <div className="skills">
+        <div className="skills-list-1">
+          {skillsList
+            .slice(0, Math.floor(skillsList.length / 2))
+            .map((skill, index) => (
+              <Logo key={`${index}_${skill.name}`} {...skill} />
+            ))}
+        </div>
+        <div className="skills-list-2">
+          {skillsList
+            .slice(Math.floor(skillsList.length / 2))
+            .map((skill, index) => (
+              <Logo key={`${index}_${skill.name}`} {...skill} />
+            ))}
+        </div>
       </div>
     </div>
   );

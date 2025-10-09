@@ -1,0 +1,78 @@
+/* Universal Gradient Border Effect - Simple Border Approach */
+
+.gradient-border-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  padding: 2px;
+  background: transparent;
+}
+
+.gradient-border-container > * {
+  position: relative;
+  z-index: 1;
+  background-color: var(--secondary-bg);
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* Gradient border effect - simple border animation */
+.gradient-border-container::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 10px;
+  background: linear-gradient(45deg, 
+    #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, 
+    #feca57, #ff9ff3, #54a0ff, #5f27cd);
+  background-size: 400% 400%;
+  animation: gradientShift 3s ease infinite;
+  z-index: -1;
+}
+
+/* Moving gradient effect */
+.gradient-border-container::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 10px;
+  background: conic-gradient(from 0deg, 
+    #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, 
+    #feca57, #ff9ff3, #54a0ff, #5f27cd, #ff6b6b);
+  animation: rotate 4s linear infinite;
+  z-index: -2;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .gradient-border-container::before,
+  .gradient-border-container::after {
+    animation-duration: 2s;
+  }
+}

@@ -1,0 +1,92 @@
+/* True Running Trail Effect - Small Moving Light */
+
+.running-trail-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    padding: 2px;
+    background: transparent;
+  }
+  
+  .running-trail-container > * {
+    position: relative;
+    z-index: 1;
+    background-color: var(--secondary-bg);
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Running trail effect - small moving light */
+  .running-trail-container::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 10px;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 300deg,
+      #ff6b6b 320deg,
+      #4ecdc4 340deg,
+      #45b7d1 360deg,
+      transparent 380deg,
+      transparent 360deg
+    );
+    animation: rotateTrail 3s linear infinite;
+    z-index: -1;
+  }
+  
+  /* Second trail for more visibility */
+  .running-trail-container::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 10px;
+    background: conic-gradient(
+      from 180deg,
+      transparent 0deg,
+      transparent 300deg,
+      #feca57 320deg,
+      #ff9ff3 340deg,
+      #54a0ff 360deg,
+      transparent 380deg,
+      transparent 360deg
+    );
+    animation: rotateTrailReverse 3.5s linear infinite;
+    z-index: -1;
+  }
+  
+  @keyframes rotateTrail {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes rotateTrailReverse {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .running-trail-container::before,
+    .running-trail-container::after {
+      animation-duration: 2s;
+    }
+  }
+  

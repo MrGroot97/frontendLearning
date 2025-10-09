@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const devToolsTech = "https://devtools.tech/questions/all?type=3";
 const closureConcept =
     "https://knowkalpesh.hashnode.dev/understanding-javascript-closure";
@@ -26,3 +27,8 @@ const reduxInterviewQuestions = [
 const impCodingQuestions = [
     'https://media.licdn.com/dms/document/media/D561FAQFhMthsmD3fRQ/feedshare-document-pdf-analyzed/0/1721449239571?e=1722470400&v=beta&t=LfyC0XTOplXNnkdInoFwHbkFY7u8bmKh6cG-mTy8t-A'
 ];
+
+const webDevBrowserArticles = [
+    'https://web.dev/articles/howbrowserswork',
+    'https://developer.chrome.com/blog/inside-browser-part1',
+]
